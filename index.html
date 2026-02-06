@@ -3,58 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI実践塾 | 未来を創る力を、すべての中高生へ</title>
+    <title>AIと未来をつくろう｜地域AIスクール（松戸市根木内）</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
-        header { background: #007bff; color: white; padding: 2rem; text-align: center; border-radius: 8px; }
-        h2 { color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
-        .course { background: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 10px; }
-        footer { text-align: center; margin-top: 40px; font-size: 0.9e; color: #777; }
+        /* --- デザイン変数 --- */
+        :root {
+            --main-blue: #0056b3;
+            --accent-orange: #ff8c00;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        /* --- 基本スタイル --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: var(--text-dark); background-color: var(--white); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; }
+        .btn-cta { background-color: var(--accent-orange); color: var(--white); font-size: 1.1rem; }
+        .btn-cta:hover { transform: scale(1.05); background-color: #e67e00; }
+        section { padding: 80px 0; }
+        h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--main-blue); }
+
+        /* --- ヘッダー --- */
+        header { background: var(--white); height: 70px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-size: 1.4rem; font-weight: bold; color: var(--main-blue); }
+        nav ul { display: flex; gap: 20px; }
+        @media (max-width: 768px) { nav { display: none; } } /* スマホでは簡易化 */
+
+        /* --- ヒーローエリア --- */
+        .hero { background: linear-gradient(rgba(0,86,179,0.1), rgba(0,86,179,0.05)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200') center/cover; padding: 100px 0; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* --- 特徴セクション --- */
+        .features { background-color: var(--bg-light); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--white); padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .feature-card h3 { margin-bottom: 15px; color: var(--main-blue); }
+
+        /* --- カリキュラム（タブ切り替え） --- */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { padding: 10px 20px; border: 2px solid var(--main-blue); border-radius: 5px; cursor: pointer; background: none; color: var(--main-blue); font-weight: bold; }
+        .tab-btn.active { background: var(--main-blue); color: var(--white); }
+        .tab-content { display: none; background: var(--bg-light); padding: 30px; border-radius: 10px; }
+        .tab-content.active { display: block; }
+        .sold-out { background: #ff4444; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 5px; }
+
+        /* --- 講師紹介 --- */
+        .teachers { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .teacher-card { text-align: center; width: 200px; }
+        .teacher-icon { width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 15px; overflow: hidden; }
+        .teacher-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- ステップ・重要注記 --- */
+        .step-container { display: flex; justify-content: space-around; margin-bottom: 40px; }
+        .alert-box { border: 2px solid #ff4444; padding: 20px; border-radius: 10px; background: #fff5f5; color: #cc0000; font-weight: bold; }
+
+        /* --- FAQ --- */
+        .faq-item { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .faq-q { font-weight: bold; color: var(--main-blue); display: block; }
+
+        /* --- フッター --- */
+        footer { background: var(--text-dark); color: var(--white); text-align: center; padding: 40px 0; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>AI実践塾（仮）</h1>
-    <p>AIを「魔法」から「一生モノの道具」へ変えよう</p>
+    <div class="container header-inner">
+        <div class="logo">地域AIスクール</div>
+        <nav>
+            <ul>
+                <li><a href="#features">特徴</a></li>
+                <li><a href="#curriculum">カリキュラム</a></li>
+                <li><a href="#teachers">講師</a></li>
+                <li><a href="#access">アクセス</a></li>
+            </ul>
+        </nav>
+        <a href="#form" class="btn btn-cta" style="padding: 8px 20px; font-size: 0.9rem;">参加申し込み</a>
+    </div>
 </header>
 
-<section>
-    <h2>私たちの想い</h2>
-    <p>
-        AIはこれからの時代の必須スキルです。でも、ただ使うだけではもったいない。
-        「AIをどう使い、何を創り出すか」を、同世代の仲間と一緒に学びませんか？
-        現在、中高生向けにAIを無料で学べる環境を準備中です。
-    </p>
-</section>
-
-<section>
-    <h2>学べるカリキュラム案</h2>
-    <div class="course">
-        <h3>1. AI勉強術</h3>
-        <p>ChatGPTなどのAIを「最強の家庭教師」にして、テスト勉強や予習・復習を効率化する方法を伝授します。</p>
-    </div>
-    <div class="course">
-        <h3>2. AIクリエイティブ</h3>
-        <p>画像生成AIや動画生成AIを使って、自分だけの作品やプロモーションビデオを作ります。</p>
-    </div>
-    <div class="course">
-        <h3>3. AI×Web制作</h3>
-        <p>AIの力を借りて、自分だけのWebサイトやアプリを実際に公開する体験をします。</p>
+<section class="hero">
+    <div class="container">
+        <h1>AIと未来をつくろう</h1>
+        <p>地域で学ぶ、AIの第一歩。千葉県松戸市根木内を拠点に、<br>小学生から社会人までが集う<strong>完全無料</strong>のAIスクールです。</p>
+        <a href="#form" class="btn btn-cta">無料で参加申し込む</a>
     </div>
 </section>
 
-<section>
-    <h2>今後の予定</h2>
-    <ul>
-        <li><strong>2026年3月：</strong> プレオープン・無料体験会実施予定</li>
-        <li><strong>2026年4月：</strong> 本開校予定</li>
-    </ul>
+<section id="features" class="container">
+    <h2>スクールの3つの特徴</h2>
+    <div class="features">
+        <div class="feature-card">
+            <h3>📍 地域密着・オフライン</h3>
+            <p>松戸市根木内での対面学習を重視。教え合い、刺激し合えるコミュニティを作ります。</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎓 世代別カリキュラム</h3>
+            <p>小学生から社会人まで、それぞれのレベルと興味に合わせた内容を提供します。</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎁 完全無料</h3>
+            <p>ボランティア運営のため参加費はゼロ。営業目的もないので安心して学べます。</p>
+        </div>
+    </div>
+</section>
+
+<section id="curriculum" style="background-color: var(--bg-light);">
+    <div class="container">
+        <h2>カリキュラム</h2>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'kids')">小学生</button>
+            <button class="tab-btn" onclick="openTab(event, 'middle')">中高生</button>
+            <button class="tab-btn" onclick="openTab(event, 'adult')">大学生・社会人 <span class="sold-out">満員</span></button>
+        </div>
+
+        <div id="kids" class="tab-content active">
+            <h3>AIで遊んでみよう</h3>
+            <p>画像生成AIや対話AIを使って、自分のアイデアを形にする楽しさを体験します。まずは「触れてみる」ことからスタート！</p>
+        </div>
+        <div id="middle" class="tab-content">
+            <h3>AIでクリエイティブ制作</h3>
+            <p>AIをプログラミングやWeb制作の補助として活用する方法を学びます。自分の作品をAIの力でアップデートしてみましょう。</p>
+        </div>
+        <div id="adult" class="tab-content">
+            <h3>ビジネス・実務への活用</h3>
+            <p>※現在、満員のため新規受付を停止しております。実務でのプロンプトエンジニアリングや効率化を学びます。</p>
+        </div>
+    </div>
+</section>
+
+<section id="teachers" class="container">
+    <h2>講師紹介</h2>
+    <div class="teachers">
+        <div class="teacher-card">
+            <div class="teacher-icon"></div>
+            <h4>masa</h4>
+            <p>親しみやすい指導がモットー</p>
+        </div>
+        <div class="teacher-card">
+            <div class="teacher-icon"></div>
+            <h4>hao</h4>
+            <p>AIの仕組みをわかりやすく解説</p>
+        </div>
+        <div class="teacher-card">
+            <div class="teacher-icon"></div>
+            <h4>ao</h4>
+            <p>クリエイティブな活用法を提案</p>
+        </div>
+    </div>
+</section>
+
+<section id="flow" style="background-color: var(--bg-light);">
+    <div class="container">
+        <h2>参加方法</h2>
+        <div class="step-container">
+            <div><strong>1. フォーム申込</strong><br>下部のボタンより</div>
+            <div><strong>2. LINE調整</strong><br>希望時間を連絡</div>
+            <div><strong>3. 当日参加</strong><br>会場へGO!</div>
+        </div>
+        <div class="alert-box">
+            ⚠ 小中学生は「会場参加のみ」となります。オンライン参加は大学生・社会人のみ可能です。
+        </div>
+    </div>
+</section>
+
+<section id="access" class="container">
+    <h2>アクセス・詳細</h2>
+    <p style="text-align: center;"><strong>日時：</strong> 毎週土曜 13:00 – 17:00</p>
+    <p style="text-align: center;"><strong>場所：</strong> 千葉県松戸市根木内（詳細は参加確定後にご案内します）</p>
+</section>
+
+<section id="faq" class="container">
+    <h2>よくある質問</h2>
+    <div class="faq-item">
+        <span class="faq-q">Q. パソコンは持っていなくても大丈夫ですか？</span>
+        <p>A. はい、貸出機がありますので手ぶらで参加いただけます。</p>
+    </div>
+    <div class="faq-item">
+        <span class="faq-q">Q. 本当に無料ですか？</span>
+        <p>A. はい。地域の学びの場を作るボランティア活動のため、一切費用はかかりません。</p>
+    </div>
+</section>
+
+<section id="form" style="text-align: center;">
+    <div class="container">
+        <h2>未来への第一歩を踏み出そう</h2>
+        <p style="margin-bottom: 30px;">定員に限りがあります。お早めにお申し込みください。</p>
+        <a href="#" class="btn btn-cta">参加申し込みフォーム（Googleフォームへ）</a>
+    </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 AI実践塾 設立準備室</p>
+    <p>&copy; 2026 地域AIスクール @松戸市根木内</p>
 </footer>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
 
 </body>
 </html>
