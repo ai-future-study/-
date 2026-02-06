@@ -48,7 +48,7 @@
         .feature-card { background: var(--white); padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .feature-card h3 { margin-bottom: 15px; color: var(--main-blue); }
 
-        /* --- カリキュラム（タブ切り替え） --- */
+        /* --- カリキュラム --- */
         .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
         .tab-btn { padding: 10px 20px; border: 2px solid var(--main-blue); border-radius: 5px; cursor: pointer; background: none; color: var(--main-blue); font-weight: bold; }
         .tab-btn.active { background: var(--main-blue); color: var(--white); }
@@ -56,18 +56,9 @@
         .tab-content.active { display: block; }
         .sold-out { background: #ff4444; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 5px; }
 
-        /* --- 講師紹介 --- */
-        .teachers { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .teacher-card { text-align: center; width: 200px; }
-        .teacher-icon { width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 15px; overflow: hidden; }
-
         /* --- ステップ・重要注記 --- */
         .step-container { display: flex; justify-content: space-around; margin-bottom: 40px; }
         .alert-box { border: 2px solid #ff4444; padding: 20px; border-radius: 10px; background: #fff5f5; color: #cc0000; font-weight: bold; }
-
-        /* --- FAQ --- */
-        .faq-item { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        .faq-q { font-weight: bold; color: var(--main-blue); display: block; }
 
         /* --- フッター --- */
         footer { background: var(--text-dark); color: var(--white); text-align: center; padding: 40px 0; }
@@ -86,7 +77,7 @@
                 <li><a href="#access">アクセス</a></li>
             </ul>
         </nav>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLbNxnTq_AB4kYSenVlpFHvT2IkHmJ4Rh1HuiZuUJzGnpi5A/viewform?usp=header" target="_blank" class="btn btn-cta" style="padding: 8px 20px; font-size: 0.9rem;">参加申し込み</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta" style="padding: 8px 20px; font-size: 0.9rem;">参加申し込み</a>
     </div>
 </header>
 
@@ -94,98 +85,15 @@
     <div class="container">
         <h1>AIと未来をつくろう</h1>
         <p>地域で学ぶ、AIの第一歩。千葉県松戸市根木内を拠点に、<br>小学生から社会人までが集う<strong>完全無料</strong>のAIスクールです。</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLbNxnTq_AB4kYSenVlpFHvT2IkHmJ4Rh1HuiZuUJzGnpi5A/viewform?usp=header" target="_blank" class="btn btn-cta">無料で参加申し込む</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta">無料で参加申し込む</a>
     </div>
-</section>
-
-<section id="features" class="container">
-    <h2>スクールの3つの特徴</h2>
-    <div class="features">
-        <div class="feature-card">
-            <h3>📍 地域密着・オフライン</h3>
-            <p>松戸市根木内での対面学習を重視。教え合い、刺激し合えるコミュニティを作ります。</p>
-        </div>
-        <div class="feature-card">
-            <h3>🎓 世代別カリキュラム</h3>
-            <p>小学生から社会人まで、それぞれのレベルと興味に合わせた内容を提供します。</p>
-        </div>
-        <div class="feature-card">
-            <h3>🎁 完全無料</h3>
-            <p>ボランティア運営のため参加費はゼロ。営業目的もないので安心して学べます。</p>
-        </div>
-    </div>
-</section>
-
-<section id="curriculum" style="background-color: var(--bg-light);">
-    <div class="container">
-        <h2>カリキュラム</h2>
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'kids')">小学生</button>
-            <button class="tab-btn" onclick="openTab(event, 'middle')">中高生</button>
-            <button class="tab-btn" onclick="openTab(event, 'adult')">大学生・社会人 <span class="sold-out">満員</span></button>
-        </div>
-
-        <div id="kids" class="tab-content active">
-            <h3>AIで遊んでみよう</h3>
-            <p>画像生成AIや対話AIを使って、自分のアイデアを形にする楽しさを体験します。まずは「触れてみる」ことからスタート！</p>
-        </div>
-        <div id="middle" class="tab-content">
-            <h3>AIでクリエイティブ制作</h3>
-            <p>AIをプログラミングやWeb制作の補助として活用する方法を学びます。自分の作品をAIの力でアップデートしてみましょう。</p>
-        </div>
-        <div id="adult" class="tab-content">
-            <h3>ビジネス・実務への活用</h3>
-            <p>※現在、満員のため新規受付を停止しております。実務でのプロンプトエンジニアリングや効率化を学びます。</p>
-        </div>
-    </div>
-</section>
-
-<section id="teachers" class="container">
-    <h2>講師紹介</h2>
-    <div class="teachers">
-        <div class="teacher-card">
-            <div class="teacher-icon"></div>
-            <h4>masa</h4>
-            <p>親しみやすい指導がモットー</p>
-        </div>
-        <div class="teacher-card">
-            <div class="teacher-icon"></div>
-            <h4>hao</h4>
-            <p>AIの仕組みをわかりやすく解説</p>
-        </div>
-        <div class="teacher-card">
-            <div class="teacher-icon"></div>
-            <h4>ao</h4>
-            <p>クリエイティブな活用法を提案</p>
-        </div>
-    </div>
-</section>
-
-<section id="flow" style="background-color: var(--bg-light);">
-    <div class="container">
-        <h2>参加方法</h2>
-        <div class="step-container">
-            <div><strong>1. フォーム申込</strong><br>ボタンより</div>
-            <div><strong>2. LINE調整</strong><br>希望時間を連絡</div>
-            <div><strong>3. 当日参加</strong><br>会場へGO!</div>
-        </div>
-        <div class="alert-box">
-            ⚠ 小中学生は「会場参加のみ」となります。オンライン参加は大学生・社会人のみ可能です。
-        </div>
-    </div>
-</section>
-
-<section id="access" class="container">
-    <h2>アクセス・詳細</h2>
-    <p style="text-align: center;"><strong>日時：</strong> 毎週土曜 13:00 – 17:00</p>
-    <p style="text-align: center;"><strong>場所：</strong> 千葉県松戸市根木内（詳細は参加確定後にご案内します）</p>
 </section>
 
 <section id="form" style="text-align: center;">
     <div class="container">
         <h2>未来への第一歩を踏み出そう</h2>
         <p style="margin-bottom: 30px;">定員に限りがあります。お早めにお申し込みください。</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLbNxnTq_AB4kYSenVlpFHvT2IkHmJ4Rh1HuiZuUJzGnpi5A/viewform?usp=header" target="_blank" class="btn btn-cta">参加申し込みフォーム（Googleフォーム）</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta">参加申し込みフォーム（Googleフォーム）</a>
     </div>
 </section>
 
