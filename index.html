@@ -32,12 +32,28 @@
         .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .logo { font-size: 1.4rem; font-weight: bold; color: var(--main-blue); }
         nav ul { display: flex; gap: 20px; }
-        @media (max-width: 768px) { nav { display: none; } } /* スマホでは簡易化 */
+        @media (max-width: 768px) { nav { display: none; } }
 
-        /* --- ヒーローエリア --- */
-        .hero { background: linear-gradient(rgba(0,86,179,0.1), rgba(0,86,179,0.05)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200') center/cover; padding: 100px 0; text-align: center; }
-        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        /* --- ヒーローエリア（タイトル色を白に変更） --- */
+        .hero { 
+            /* 背景画像を少し暗くして白文字を見えやすく調整 */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200') center/cover; 
+            padding: 100px 0; 
+            text-align: center; 
+        }
+        .hero h1 { 
+            font-size: 2.8rem; 
+            margin-bottom: 20px; 
+            color: var(--white); /* タイトルを白に */
+        }
+        .hero p { 
+            font-size: 1.2rem; 
+            margin-bottom: 30px; 
+            max-width: 700px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            color: var(--white); /* 説明文も白に（任意） */
+        }
 
         /* --- 特徴セクション --- */
         .features { background-color: var(--bg-light); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -56,7 +72,6 @@
         .teachers { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
         .teacher-card { text-align: center; width: 200px; }
         .teacher-icon { width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 15px; overflow: hidden; }
-        .teacher-icon img { width: 100%; height: 100%; object-fit: cover; }
 
         /* --- ステップ・重要注記 --- */
         .step-container { display: flex; justify-content: space-around; margin-bottom: 40px; }
@@ -124,77 +139,23 @@
 
         <div id="kids" class="tab-content active">
             <h3>AIで遊んでみよう</h3>
-            <p>画像生成AIや対話AIを使って、自分のアイデアを形にする楽しさを体験します。まずは「触れてみる」ことからスタート！</p>
+            <p>画像生成AIや対話AIを使って、自分のアイデアを形にする楽しさを体験します。</p>
         </div>
         <div id="middle" class="tab-content">
             <h3>AIでクリエイティブ制作</h3>
-            <p>AIをプログラミングやWeb制作の補助として活用する方法を学びます。自分の作品をAIの力でアップデートしてみましょう。</p>
+            <p>AIをプログラミングやWeb制作の補助として活用する方法を学びます。</p>
         </div>
         <div id="adult" class="tab-content">
             <h3>ビジネス・実務への活用</h3>
-            <p>※現在、満員のため新規受付を停止しております。実務でのプロンプトエンジニアリングや効率化を学びます。</p>
+            <p>※現在、満員のため新規受付を停止しております。</p>
         </div>
-    </div>
-</section>
-
-<section id="teachers" class="container">
-    <h2>講師紹介</h2>
-    <div class="teachers">
-        <div class="teacher-card">
-            <div class="teacher-icon"></div>
-            <h4>masa</h4>
-            <p>親しみやすい指導がモットー</p>
-        </div>
-        <div class="teacher-card">
-            <div class="teacher-icon"></div>
-            <h4>hao</h4>
-            <p>AIの仕組みをわかりやすく解説</p>
-        </div>
-        <div class="teacher-card">
-            <div class="teacher-icon"></div>
-            <h4>ao</h4>
-            <p>クリエイティブな活用法を提案</p>
-        </div>
-    </div>
-</section>
-
-<section id="flow" style="background-color: var(--bg-light);">
-    <div class="container">
-        <h2>参加方法</h2>
-        <div class="step-container">
-            <div><strong>1. フォーム申込</strong><br>下部のボタンより</div>
-            <div><strong>2. LINE調整</strong><br>希望時間を連絡</div>
-            <div><strong>3. 当日参加</strong><br>会場へGO!</div>
-        </div>
-        <div class="alert-box">
-            ⚠ 小中学生は「会場参加のみ」となります。オンライン参加は大学生・社会人のみ可能です。
-        </div>
-    </div>
-</section>
-
-<section id="access" class="container">
-    <h2>アクセス・詳細</h2>
-    <p style="text-align: center;"><strong>日時：</strong> 毎週土曜 13:00 – 17:00</p>
-    <p style="text-align: center;"><strong>場所：</strong> 千葉県松戸市根木内（詳細は参加確定後にご案内します）</p>
-</section>
-
-<section id="faq" class="container">
-    <h2>よくある質問</h2>
-    <div class="faq-item">
-        <span class="faq-q">Q. パソコンは持っていなくても大丈夫ですか？</span>
-        <p>A. はい、貸出機がありますので手ぶらで参加いただけます。</p>
-    </div>
-    <div class="faq-item">
-        <span class="faq-q">Q. 本当に無料ですか？</span>
-        <p>A. はい。地域の学びの場を作るボランティア活動のため、一切費用はかかりません。</p>
     </div>
 </section>
 
 <section id="form" style="text-align: center;">
     <div class="container">
         <h2>未来への第一歩を踏み出そう</h2>
-        <p style="margin-bottom: 30px;">定員に限りがあります。お早めにお申し込みください。</p>
-        <a href="#" class="btn btn-cta">参加申し込みフォーム（Googleフォームへ）</a>
+        <a href="#" class="btn btn-cta">参加申し込みフォーム</a>
     </div>
 </section>
 
