@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIと未来をつくろう｜地域AIスクール（松戸市根木内）</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --main-blue: #0056b3;
@@ -12,96 +12,131 @@
             --bg-light: #fdfdfd;
             --white: #ffffff;
             --text-dark: #222;
-            --section-space: 100px; /* 余白をしっかり確保 */
+            --section-space: 100px;
         }
 
+        /* --- 基本スタイル --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: var(--text-dark); background-color: var(--bg-light); }
-        
-        /* --- 共通コンポーネント --- */
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: var(--text-dark); background-color: var(--bg-light); word-break: break-all; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
         .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         section { padding: var(--section-space) 0; }
-        
-        h2 { text-align: center; font-size: 2.2rem; font-weight: 900; margin-bottom: 50px; color: var(--main-blue); }
-        h2 span { font-size: 1rem; display: block; color: var(--accent-orange); margin-bottom: 8px; }
 
+        /* --- 見出し --- */
+        h2 { text-align: center; font-size: 2.2rem; font-weight: 900; margin-bottom: 50px; color: var(--main-blue); }
+        h2 span { font-size: 1rem; display: block; color: var(--accent-orange); margin-bottom: 8px; letter-spacing: 2px; }
+
+        /* --- ボタン(CTA) --- */
         .btn-wrapper { text-align: center; margin: 30px 0; }
         .micro-copy { font-size: 0.9rem; color: var(--accent-orange); font-weight: bold; margin-bottom: 8px; display: block; }
-        .btn { display: inline-block; padding: 20px 50px; border-radius: 50px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 140, 0, 0.2); }
+        .btn { display: inline-block; padding: 20px 50px; border-radius: 50px; font-weight: 900; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 140, 0, 0.2); cursor: pointer; border: none; }
         .btn-cta { background: var(--accent-orange); color: var(--white) !important; font-size: 1.3rem; }
         .btn-cta:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(255, 140, 0, 0.4); }
+
+        /* --- ヘッダー --- */
+        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); height: 80px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-size: 1.3rem; font-weight: 900; color: var(--main-blue); border-left: 5px solid var(--accent-orange); padding-left: 12px; line-height: 1; }
+        nav ul { display: flex; gap: 25px; font-weight: 700; font-size: 0.95rem; }
+        nav ul li a:hover { color: var(--accent-orange); }
 
         /* --- ヒーローエリア --- */
         .hero { 
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200') center/cover; 
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200') center/cover; 
             padding: 160px 0; 
             text-align: center; 
             color: var(--white);
+            border-radius: 0 0 50px 50px;
         }
-        .hero-content { position: relative; z-index: 2; }
         .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); /* ジャンプ率を大幅アップ */
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 24px;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8); /* 可読性向上 */
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
         }
         .hero p { 
             font-size: 1.25rem; 
             font-weight: 500;
             max-width: 800px;
             margin: 0 auto 40px;
-            text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+            line-height: 1.8;
         }
 
-        /* --- 特徴（アイコン統一感） --- */
-        .features { background: #fff; }
+        /* --- 特徴セクション --- */
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .feature-card { text-align: center; padding: 20px; }
-        .feature-card img { width: 80px; height: 80px; margin-bottom: 20px; opacity: 0.9; }
+        .feature-card { background: #fff; padding: 40px 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f0f0f0; }
+        .feature-card img { width: 80px; height: 80px; margin-bottom: 20px; }
         .feature-card h3 { font-size: 1.5rem; color: var(--main-blue); margin-bottom: 15px; }
 
-        /* --- コース（現在地の強調） --- */
-        .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .tab-btn { 
-            padding: 12px 30px; border: 2px solid var(--main-blue); background: transparent; 
-            color: var(--main-blue); border-radius: 8px; cursor: pointer; font-weight: 900; transition: 0.3s;
-        }
-        .tab-btn.active { background: var(--accent-orange); border-color: var(--accent-orange); color: var(--white); }
-
-        .tab-content { display: none; background: #fff; padding: 50px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .tab-content.active { display: block; }
-        .benefit-list { margin-top: 25px; padding-top: 25px; border-top: 1px dashed #ddd; list-style: none; }
-        .benefit-list li::before { content: "✅"; margin-right: 10px; }
+        /* --- 中高生コース(一本化) --- */
+        .course-box { background: #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border-top: 10px solid var(--accent-orange); }
+        .course-content { padding: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; align-items: center; }
+        .course-text h3 { font-size: 2rem; color: var(--main-blue); margin-bottom: 20px; line-height: 1.4; }
+        .benefit-card { background: #f8fafd; padding: 35px; border-radius: 20px; border: 1px solid #e0e6ed; }
+        .benefit-card h4 { color: var(--accent-orange); margin-bottom: 20px; font-weight: 900; font-size: 1.1rem; border-bottom: 2px solid var(--accent-orange); display: inline-block; }
+        .benefit-list li { margin-bottom: 15px; font-weight: 700; display: flex; align-items: flex-start; }
+        .benefit-list li::before { content: "✅"; margin-right: 12px; font-size: 1.1rem; }
 
         /* --- 講師紹介 --- */
         .teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .teacher-card { background: #fff; border-radius: 24px; padding: 40px; text-align: center; border: 1px solid #eee; }
-        .teacher-img { width: 140px; height: 140px; background: #f0f0f0; border-radius: 50%; margin: 0 auto 20px; overflow: hidden; }
-        .teacher-card h4 { font-size: 1.4rem; margin-bottom: 10px; }
-        .teacher-msg { font-size: 0.9rem; font-style: italic; color: #666; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
+        .teacher-card { background: #fff; border-radius: 24px; padding: 40px; text-align: center; border: 1px solid #eee; transition: 0.3s; }
+        .teacher-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .teacher-img { width: 140px; height: 140px; background: #f0f0f0; border-radius: 50%; margin: 0 auto 20px; overflow: hidden; border: 4px solid var(--bg-light); }
+        .teacher-img img { width: 100%; height: 100%; object-fit: cover; }
+        .teacher-card h4 { font-size: 1.4rem; color: var(--main-blue); }
+        .teacher-card h4 span { font-size: 0.9rem; color: #666; display: block; font-weight: 400; margin-top: 5px; }
+        .teacher-msg { font-size: 0.95rem; font-style: italic; color: #555; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; line-height: 1.7; }
 
-        /* --- アクセス（具体化） --- */
-        .access-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: #fff; padding: 40px; border-radius: 24px; }
-        .map-dummy { background: #eee; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 15px; }
+        /* --- アクセス --- */
+        .access-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .access-info { padding: 50px; }
+        .access-info h3 { font-size: 1.8rem; color: var(--main-blue); margin-bottom: 20px; }
+        .map-area { background: #e5e5e5; min-height: 350px; display: flex; align-items: center; justify-content: center; color: #777; font-weight: bold; }
+
+        /* --- フッター --- */
+        footer { background: var(--main-blue); color: var(--white); padding: 80px 0 40px; text-align: center; }
+        .footer-cta h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 20px; }
+        .footer-cta h2::after { background: var(--white); }
 
         /* --- スマホ調整 --- */
         @media (max-width: 768px) {
-            .hero { padding: 100px 0; }
-            .tab-btn { padding: 10px 15px; font-size: 0.9rem; }
-            .tab-content { padding: 30px 20px; }
+            header { height: 70px; }
+            nav { display: none; }
+            .hero { padding: 100px 0; border-radius: 0 0 30px 30px; }
+            .course-content { padding: 30px 20px; }
+            .access-info { padding: 30px 20px; }
+            section { padding: 60px 0; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
+<header>
+    <div class="container header-inner">
+        <div class="logo">地域AIスクール</div>
+        <nav>
+            <ul>
+                <li><a href="#features">特徴</a></li>
+                <li><a href="#curriculum">コース</a></li>
+                <li><a href="#teachers">講師</a></li>
+                <li><a href="#access">アクセス</a></li>
+            </ul>
+        </nav>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta" style="padding: 10px 25px; font-size: 0.85rem; box-shadow: none;">無料申込</a>
+    </div>
+</header>
+
 <section class="hero">
-    <div class="container hero-content">
+    <div class="container">
         <h1>AIと未来を<br>つくろう</h1>
-        <p>「AIは魔法じゃない、最高の道具だ」<br>松戸市根木内から、次世代のクリエイターを育てる完全無料のAIスクール。</p>
+        <p>「AIは魔法じゃない、最高の道具だ」<br>松戸市根木内から、次世代のクリエイターを育てる完全無料の中高生向けAIスクール。</p>
         <div class="btn-wrapper">
-            <span class="micro-copy">まずは無料で体験！PC貸出もございます</span>
+            <span class="micro-copy">＼ 知識ゼロ歓迎！PC貸出もございます ／</span>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta">無料で参加申し込む</a>
         </div>
     </div>
@@ -112,63 +147,51 @@
     <div class="feature-grid">
         <div class="feature-card">
             <img src="https://cdn-icons-png.flaticon.com/512/1018/1018573.png" alt="地域">
-            <h3>地域密着コミュニティ</h3>
-            <p>松戸市根木内での「対面」を重視。オンラインでは得られない、教え合いと刺激がある場所です。</p>
+            <h3>地域密着・対面重視</h3>
+            <p>松戸市根木内での交流を大切にしています。オンラインでは得られない、仲間と教え合い刺激し合う「場所」を提供します。</p>
         </div>
         <div class="feature-card">
             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="無料">
             <h3>なぜ完全無料なの？</h3>
-            <p>私たちは「IT格差をなくしたい」という想いで集まった有志です。地域の子供たちの未来へ投資しているため、受講料は一切いただきません。</p>
+            <p>「IT格差をなくし、地域の才能を伸ばしたい」という有志の想いで運営しています。営業目的の勧誘は一切ありませんのでご安心ください。</p>
         </div>
         <div class="feature-card">
             <img src="https://cdn-icons-png.flaticon.com/512/2010/2010490.png" alt="プロ">
-            <h3>プロから学ぶ本物</h3>
-            <p>講師は全員、現役のエンジニアやクリエイター。趣味のレベルを超えた、社会で通じる考え方が身につきます。</p>
+            <h3>プロ直伝の本質</h3>
+            <p>講師は現役エンジニア。単なるツールの使いかたではなく、社会で通用する「AIを使いこなす思考法」を伝授します。</p>
         </div>
     </div>
 </section>
 
 <section id="curriculum" style="background: #f0f4f8;">
     <div class="container">
-        <h2><span>COURSE</span>選べる3つのコース</h2>
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'kids')">小中学生</button>
-            <button class="tab-btn" onclick="openTab(event, 'high')">高校生</button>
-            <button class="tab-btn" onclick="openTab(event, 'adult')">大人コース</button>
-        </div>
-
-        <div id="kids" class="tab-content active">
-            <h3>AIで遊び、発想を形にする力</h3>
-            <p>画像生成や対話型AIを使い、「自分の頭の中を形にする」プロセスを体験。ITへの苦手意識をなくし、知的好奇心を爆発させます。</p>
-            <ul class="benefit-list">
-                <li>論理的思考力（ロジカルシンキング）の基礎が身につく</li>
-                <li>「自分で調べて作る」自走力が養われる</li>
-            </ul>
-            <div class="btn-wrapper">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta" style="font-size: 1rem; padding: 15px 30px;">小中学生コースに申し込む</a>
+        <h2><span>COURSE</span>中高生向けAIクリエイティブコース</h2>
+        
+        <div class="course-box">
+            <div class="course-content">
+                <div class="course-text">
+                    <h3>AIを「相棒」にして、<br>一生モノの創造力を。</h3>
+                    <p>これからの時代、AIは避けて通れない必須スキルです。当スクールでは、AIを補助として使いこなしながら、自分のアイデアを形にする実践を繰り返します。</p>
+                    <p style="margin-top: 15px;">Pythonの基礎から、AIを使ったWeb制作、デジタル作品制作まで。学校では教わらない「未来の遊び方・創り方」を体験しましょう。</p>
+                </div>
+                <div class="benefit-card">
+                    <h4>このコースで身につく力</h4>
+                    <ul class="benefit-list">
+                        <li><strong>AI活用スキル：</strong>制作スピードを10倍にする「操り方」</li>
+                        <li><strong>問題解決能力：</strong>AIと共にエラーを乗り越えるエンジニア思考</li>
+                        <li><strong>自信と実績：</strong>「自分だけで作品を作れた」という成功体験</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btn-wrapper" style="padding-bottom: 50px;">
+                <span class="micro-copy">＼ 定員制につきお早めにお申し込みください ／</span>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta">中高生コースに無料で申し込む</a>
             </div>
         </div>
-
-        <div id="high" class="tab-content">
-            <h3>AIを相棒に作品を創り出す</h3>
-            <p>PythonとAIを組み合わせ、Web制作やプログラミングに挑戦。AIを「補助」として使いこなし、圧倒的なスピードで制作するスキルを学びます。</p>
-            <ul class="benefit-list">
-                <li>最新のAI活用スキルで受験や進路に役立つ実績作り</li>
-                <li>プログラミングとデザインの基礎を同時に習得</li>
-            </ul>
-            <div class="btn-wrapper">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta" style="font-size: 1rem; padding: 15px 30px;">高校生コースに申し込む</a>
-            </div>
-        </div>
-
-        <div id="adult" class="tab-content">
-            <h3>実務に直結するAI効率化</h3>
-            <p>※現在満員のため新規受付停止中。再開通知はLINEにて配信します。</p>
-            <ul class="benefit-list">
-                <li>日々のデスクワークをAIで10倍速にする具体策</li>
-                <li>プロンプトエンジニアリングの真髄を伝授</li>
-            </ul>
-        </div>
+        
+        <p style="margin-top: 30px; text-align: center; font-size: 0.9rem; color: #666;">
+            ※小学生・大人コースは現在キャンセル待ちです。詳細は公式LINEまでお問い合わせください。
+        </p>
     </div>
 </section>
 
@@ -177,55 +200,44 @@
     <div class="teacher-grid">
         <div class="teacher-card">
             <div class="teacher-img"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=masa" alt="masa"></div>
-            <h4>masa<span>（エンジニア歴20年）</span></h4>
-            <p class="teacher-msg">「AIは難しくない。子供たちが新しい道具を手に入れて、目を輝かせる瞬間を増やしたいんです」</p>
+            <h4>masa<span>エンジニア歴20年</span></h4>
+            <p class="teacher-msg">「AIは決して難しくありません。子供たちが新しい道具を手に入れ、自分の可能性にワクワクする瞬間を増やしたいんです。」</p>
         </div>
         <div class="teacher-card">
             <div class="teacher-img"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=hao" alt="hao"></div>
-            <h4>hao<span>（AIリサーチャー）</span></h4>
-            <p class="teacher-msg">「最新技術は都会だけのものじゃない。ここ松戸から、世界を驚かせる才能を応援します」</p>
+            <h4>hao<span>AIリサーチャー</span></h4>
+            <p class="teacher-msg">「最新技術は都会だけのものじゃない。ここ松戸から、世界を驚かせるようなクリエイターが育つのを全力で応援します。」</p>
         </div>
     </div>
 </section>
 
 <section id="access" class="container">
     <h2><span>ACCESS</span>アクセス</h2>
-    <div class="access-box">
-        <div>
+    <div class="access-container">
+        <div class="access-info">
             <h3>根木内会場</h3>
             <p>千葉県松戸市根木内<br>（JR常磐線 北小金駅より徒歩約15分 / バス5分）</p>
-            <p style="margin-top:20px;"><strong>開校日：</strong>毎週土曜日 13:00 - 17:00</p>
-            <p style="font-size:0.85rem; color:#666; margin-top:10px;">※住宅街のため、詳細な住所はお申し込み後に個別にお伝えしています。</p>
+            <p style="margin-top:30px; font-weight: bold; border-left: 4px solid var(--accent-orange); padding-left: 15px;">
+                開校日：毎週土曜日 13:00 - 17:00
+            </p>
+            <p style="font-size:0.85rem; color:#666; margin-top:20px;">
+                ※住宅街につき、詳細な住所はお申し込み確定後に個別にご案内いたします。
+            </p>
         </div>
-        <div class="map-dummy">
-            <span>Google Map プレビュー<br>（ここに地図を埋め込み）</span>
+        <div class="map-area">
+            <p>Google Map プレビュー<br><span style="font-size: 0.8rem; font-weight: normal;">(参加確定後に詳細地点を共有)</span></p>
         </div>
     </div>
 </section>
 
-<footer style="background: var(--main-blue); color: #fff; text-align: center; padding: 60px 0;">
+<footer class="footer-cta">
     <div class="container">
-        <p style="font-size:1.5rem; font-weight:900; margin-bottom:20px;">今、この場所から未来を変えよう。</p>
+        <h2>今、この場所から未来を変えよう。</h2>
+        <p style="margin-bottom: 30px; opacity: 0.9;">まずは気軽な見学・体験からスタートしませんか？</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScx3UfwFS-0VtcD8_Q0CoLN790ZIn0Rp-ecK3SR7M_QBfD4pA/viewform?usp=header" target="_blank" class="btn btn-cta">無料で参加申し込む</a>
-        <p style="margin-top:40px; font-size:0.8rem; opacity:0.7;">&copy; 2026 地域AIスクール @松戸市根木内</p>
+        <p style="margin-top:60px; font-size:0.8rem; opacity:0.6;">&copy; 2026 地域AIスクール @松戸市根木内</p>
     </div>
 </footer>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
 
 </body>
 </html>
